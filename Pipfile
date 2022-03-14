@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 flask = "*"
+requests = "*"
+numpy = "*"
+pillow = "*"
 
 [dev-packages]
 
@@ -13,3 +16,4 @@ python_version = "3.7"
 
 [scripts]
 start = "python app.py"
+test = "python localtest.py"
