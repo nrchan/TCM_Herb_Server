@@ -27,7 +27,6 @@ def test_method():
 
     # convert bytes data to PIL Image object
     img = Image.open(io.BytesIO(img_bytes))
-    img.show()
 
     # PIL image object to numpy array
     img_arr = np.asarray(img)

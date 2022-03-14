@@ -3,6 +3,7 @@ import json
 import requests
 
 api = 'http://localhost:8000/test'
+herokuapi = "https://tcm-herb-server.herokuapp.com/test"
 image_file = 'test_images/X1.jpg'
 
 with open(image_file, "rb") as f:
@@ -12,7 +13,7 @@ im_b64 = base64.b64encode(im_bytes).decode("utf8")
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
   
 payload = json.dumps({"image": im_b64, "other_key": "value"})
-response = requests.post(api, data=payload, headers=headers)
+response = requests.post(herokuapi, data=payload, headers=headers)
 try:
     data = response.json()
     print(data)
