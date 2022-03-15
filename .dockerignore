@@ -2,3 +2,6 @@
 Pipfile
 Pipfile.lock
 README.md
+.gitattributes
+**/test_images
+localtest.py

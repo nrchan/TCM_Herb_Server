@@ -6,8 +6,10 @@ import base64
 import logging             
 import numpy as np
 from PIL import Image
+import tensorflow as tf
 
 app = Flask(__name__)
+model = tf.keras.models.load_model("model.h5")
 
 @app.route("/")
 def index():
@@ -27,17 +29,19 @@ def test_method():
 
     # convert bytes data to PIL Image object
     img = Image.open(io.BytesIO(img_bytes))
+    img = img.resize((256,256))
 
     # PIL image object to numpy array
     img_arr = np.asarray(img)
-    print('img shape', img_arr.shape)
+    img_arr = img_arr.reshape((1,256,256,3))
 
     # process your img_arr here
-    
-    # access other keys of json
-    # print(request.json['other_key'])
+    result_array = model.predict(img_arr)
+    result_values, result_indices  = tf.math.top_k(result_array, k=3)
+    result_indices = np.array(result_indices)[0].tolist()
+    result_values = np.array(result_values)[0].tolist()
 
-    result_dict = {'output': 'output_key'}
+    result_dict = {"result index": result_indices, "result confidence": result_values}
     return result_dict
 
 if __name__ == "__main__":
