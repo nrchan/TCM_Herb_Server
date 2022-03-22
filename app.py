@@ -7,9 +7,10 @@ import logging
 import numpy as np
 from PIL import Image
 import tensorflow as tf
+import tensorflow_hub as hub
 
 app = Flask(__name__)
-model = tf.keras.models.load_model("model.h5")
+model = tf.keras.models.load_model("model.h5",custom_objects={'KerasLayer':hub.KerasLayer})
 
 @app.route("/")
 def index():

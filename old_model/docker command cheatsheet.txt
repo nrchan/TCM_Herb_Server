@@ -1,0 +1,3 @@
+docker build -t herb-server .
+docker tag herb-server gcr.io/tcm-herb-server/herb-server
+docker push gcr.io/tcm-herb-server/herb-server

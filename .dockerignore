@@ -4,4 +4,5 @@ Pipfile.lock
 README.md
 .gitattributes
 **/test_images
+**/old_model
 localtest.py
