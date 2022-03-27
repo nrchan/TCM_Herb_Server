@@ -1,6 +1,6 @@
 # TCM_Herb_Server
  
-This is a flask server that does traditional chinese medicine herb classification.
+This is a flask server that aims to classify traditional chinese medicine herb.
 
 ## To run the code
 You can pack this server into a docker image and run it wherever you like:
