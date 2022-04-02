@@ -1,24 +1,22 @@
 import io
 import os
 from flask import Flask, request, abort
-import json                    
 import base64
-import logging             
 import numpy as np
 from PIL import Image
 import tensorflow as tf
 import tensorflow_hub as hub
 
 app = Flask(__name__)
-model = tf.keras.models.load_model("model.h5",custom_objects={'KerasLayer':hub.KerasLayer})
+model = tf.keras.models.load_model("model-hub.h5",custom_objects={'KerasLayer':hub.KerasLayer})
+#model = tf.keras.models.load_model("model-effnetb1.h5")
 
 @app.route("/")
 def index():
     return "Hello World!"
 
 @app.route("/test", methods=['POST'])
-def test_method():         
-    # print(request.json)      
+def test_method():   
     if not request.json or 'image' not in request.json: 
         abort(400)
              
@@ -39,8 +37,8 @@ def test_method():
     # process your img_arr here
     result_array = model.predict(img_arr)
     result_values, result_indices  = tf.math.top_k(result_array, k=3)
-    result_indices = np.array(result_indices)[0].tolist()
-    result_values = np.array(result_values)[0].tolist()
+    result_indices = np.array(result_indices)[0].tolist()[0:3]
+    result_values = np.array(result_values)[0].tolist()[0:3]
 
     result_dict = {"result index": result_indices, "result confidence": result_values}
     return result_dict

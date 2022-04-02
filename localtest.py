@@ -17,7 +17,7 @@ if sys.argv[2] == "/":
     print(requests.get(api).text)
 else:
 
-    image_file = "test_images/X" + sys.argv[3] + ".jpg"
+    image_file = "test_images/" + sys.argv[3] + ".jpg"
 
     with open(image_file, "rb") as f:
         im_bytes = f.read()
