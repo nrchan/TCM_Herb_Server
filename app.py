@@ -6,10 +6,17 @@ import numpy as np
 from PIL import Image
 import tensorflow as tf
 import tensorflow_hub as hub
+from tensorflow.keras.layers import Resizing, Rescaling
 
 app = Flask(__name__)
-model = tf.keras.models.load_model("model-hub.h5",custom_objects={'KerasLayer':hub.KerasLayer})
+model = tf.keras.models.load_model("model_v7.h5",custom_objects={'KerasLayer':hub.KerasLayer})
 #model = tf.keras.models.load_model("model-effnetb1.h5")
+
+image_size = 256
+resize_and_rescale = tf.keras.Sequential([
+    Resizing(image_size, image_size),
+    Rescaling(1./255)
+])
 
 @app.route("/")
 def index():
@@ -28,7 +35,7 @@ def test_method():
 
     # convert bytes data to PIL Image object
     img = Image.open(io.BytesIO(img_bytes))
-    img = img.resize((256,256))
+    img = resize_and_rescale(img)
 
     # PIL image object to numpy array
     img_arr = np.asarray(img)
