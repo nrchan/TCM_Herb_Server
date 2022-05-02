@@ -6,3 +6,5 @@ README.md
 **/test_images
 **/old_model
 localtest.py
+LIME.py
+modelConverter.py

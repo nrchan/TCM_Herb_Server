@@ -9,7 +9,7 @@ import tensorflow_hub as hub
 from tensorflow.keras.layers import Resizing, Rescaling
 
 app = Flask(__name__)
-model = tf.keras.models.load_model("model_v7.h5",custom_objects={'KerasLayer':hub.KerasLayer})
+model = tf.keras.models.load_model("model_v13.h5",custom_objects={'KerasLayer':hub.KerasLayer})
 #model = tf.keras.models.load_model("model-effnetb1.h5")
 
 image_size = 256
