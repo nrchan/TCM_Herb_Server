@@ -5,7 +5,7 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
-model = tf.keras.models.load_model("old_model/model_v7.h5", custom_objects={'KerasLayer': hub.KerasLayer})
+model = tf.keras.models.load_model("model_v17.h5", custom_objects={'KerasLayer': hub.KerasLayer})
 
 image_size = 256
 img_path = "test_images/" + sys.argv[1] + ".jpg"
