@@ -40,7 +40,7 @@ python localtest.py LOCAL MODE IMAGE
 ### Example:
 Testing X2.jpg on local machine:
 ```
-python localtest.py local /test 2
+python localtest.py local /test X2
 ```
 
 Trying to get a hello world response from the server:

@@ -7,8 +7,8 @@ name = "pypi"
 flask = "2.0.3"
 requests = "2.26.0"
 numpy = "1.21.4"
-pillow = "8.4.0"
-tensorflow-cpu = "2.7.0"
+pillow = "9.0.1"
+tensorflow = "2.7.0"
 tensorflow-hub = "0.12.0"
 
 [dev-packages]
